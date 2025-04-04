@@ -15,4 +15,21 @@ CREATE TABLE books(
                       quantity INT         NOT NULL
 );
 
+select *
+from books;
+select c.id,c.name FROM category c join book_category bc on c.id = bc.category_id where bc.book_id=?;
 
+
+
+CREATE TABLE category(
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE book_category(
+    book_id INT NOT NULL,
+    category_id INT NOT NULL,
+    PRIMARY KEY (book_id,category_id),
+    FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
+    FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
+);

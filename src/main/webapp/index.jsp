@@ -5,7 +5,7 @@
     <title>JSP - Hello World</title>
 </head>
 <body>
-<h1><%= "Hello World!" %></h1>
+<h1><%= "Калькулятор" %></h1>
 <form action="/calculator" method="get">
     <h1>Авторизация</h1>
     <label for="value1">Первое значение:</label>
@@ -13,7 +13,7 @@
 
     <label for="value2">Второе значение:</label>
     <input type="text" id="value2" name="value2" required>
-    <button type="submit"></button>
+    <button type="submit">Посчитать</button>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
 </body>
