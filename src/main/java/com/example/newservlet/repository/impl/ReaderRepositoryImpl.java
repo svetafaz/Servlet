@@ -33,19 +33,12 @@ public Optional<ReaderEntity> findReaderById(Long id) {
             return Optional.empty();
         }
     }
-        @Override
-        public Optional<ReaderEntity> findReaderByEmail (Long id){
-            try {
-                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, readerRowMapper, id));
-            } catch (EmptyResultDataAccessException e) {
-                return Optional.empty();
-            }
-        }
+               
         @Override
 
         public Optional<ReaderEntity> findReaderByEmail (String email){
             try {
-                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, readerRowMapper, id));
+                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_EMAIL, readerRowMapper, email));
             } catch (EmptyResultDataAccessException e) {
                 return Optional.empty();
             }
@@ -53,7 +46,7 @@ public Optional<ReaderEntity> findReaderById(Long id) {
         @Override
         public Optional<ReaderEntity> findReaderByUsername (String username){
             try {
-                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_USERMAME, readerRowMapper, id));
+                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_USERMAME, readerRowMapper, username));
             } catch (EmptyResultDataAccessException e) {
                 return Optional.empty();
             }

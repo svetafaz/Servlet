@@ -20,7 +20,7 @@ public class ReaderServiceImpl implements ReaderService {
 
     @Override
     public AuthResponse signUp(SignUpRequest request) {
-        if (request.getEmail() == request.getEmail().isBlank())
+        if (request.getEmail() == null || request.getEmail().isBlank())
             return response(1, "Empty email", null);
 
         if (request.getPassword() == null || request.getPassword().isBlank())

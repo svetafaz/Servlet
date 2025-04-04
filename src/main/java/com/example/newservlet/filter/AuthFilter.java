@@ -1,11 +1,14 @@
 package com.example.newservlet.filter;
+
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebFilter;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import jakarta.servlet.ServletException;
 import java.io.IOException;
 import java.util.List;
+
 @WebFilter("/*")
 
 public class AuthFilter implements Filter {
@@ -16,8 +19,10 @@ public class AuthFilter implements Filter {
     private String PROTECTED_REDIRECT;
     private String PROTECTED_ADMIN_REDIRECT;
     private String NOTAUTH_REDIRECT;
+
     private String AUTHORIZATION;
     private String IS_ADMIN;
+
 
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
@@ -58,6 +63,7 @@ public class AuthFilter implements Filter {
     private boolean isProtectedUri(String uri) {
         return PROTECTED_URIS.contains(uri);
     }
+
     private boolean isProtectedAdminUri(String uri){
         return PROTECTED_ADMIN_URIS.contains(uri);
     }
@@ -67,13 +73,15 @@ public class AuthFilter implements Filter {
     private boolean isReaderAuth(HttpServletRequest request) {
         HttpSession session = request.getSession(false);
         if (session == null) return false;
+
         Boolean flag = (Boolean) session.getAttribute(AUTHORIZATION);
-        return flag ! = null && flag;
+        return flag != null && flag;
     }
     private boolean isReaderAdmin(HttpServletRequest request){
         HttpSession session = request.getSession(false);
         if (session == null) return false;
-        Boolean flag= (Boolean) session.getAttribute(IS_ADMIN);
-        return flag ! = null && flag;
+
+        Boolean flag = (Boolean) session.getAttribute(IS_ADMIN);
+        return flag != null && flag;
     }
 }

@@ -18,7 +18,7 @@ public class CategoryMapperImpl implements CategoryMapper {
         return CategoryEntity.builder()
                 .id(rs.getLong("id"))
                 .name(rs.getString("name"))
-                .build()
+                .build();
     }
 
     @Override
@@ -38,5 +38,4 @@ public class CategoryMapperImpl implements CategoryMapper {
 
 
 
-    }
-}
+
