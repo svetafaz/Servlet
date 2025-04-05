@@ -4,19 +4,21 @@ import lombok.experimental.UtilityClass;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
 @UtilityClass
 public class PropertyReader {
     private final Properties properties;
 
-    static{
+    static {
         properties = new Properties();
-        try{
+        try {
             InputStream is = PropertyReader.class.getClassLoader().getResourceAsStream("app.properties");
             properties.load(is);
         } catch (IOException e) {
-           e.printStackTrace();
+            e.printStackTrace();
         }
     }
-    public String getProperty(String propertyName) {return properties.getProperty(propertyName);
+    public String getProperty(String propertyName) {
+        return properties.getProperty(propertyName);
     }
 }

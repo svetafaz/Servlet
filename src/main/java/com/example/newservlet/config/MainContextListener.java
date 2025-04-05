@@ -29,8 +29,6 @@ import com.example.newservlet.mapper.impl.ReaderMapperImpl;
 
 import java.util.List;
 
-//import static jdk.internal.org.jline.utils.Colors.s;
-
 @Slf4j
 @WebListener
 public class MainContextListener implements ServletContextListener {
