@@ -12,6 +12,6 @@ public class ReaderEntity {
    private Long id;
    private String  username;
    private String hashPassword;
-    private String email;
-    private String role;
+   private String email;
+   private String role;
 }
