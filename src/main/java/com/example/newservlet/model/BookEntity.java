@@ -10,11 +10,11 @@ import java.util.List;
 @Builder
 @Data
 public class BookEntity {
-   long id;
-    String name;
-    String writer;
-     int price;
-    byte[] image;
-    int quantity;
+    private long id;
+    private String name;
+    private String writer;
+    private int price;
+    private byte[] image;
+    private int quantity;
     private List<CategoryEntity> categories;
 }
