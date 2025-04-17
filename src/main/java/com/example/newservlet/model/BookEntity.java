@@ -17,4 +17,5 @@ public class BookEntity {
     private byte[] image;
     private int quantity;
     private List<CategoryEntity> categories;
+    private boolean isSelected;
 }

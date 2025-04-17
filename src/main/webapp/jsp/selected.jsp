@@ -96,31 +96,31 @@
             justify-content: space-between; /* Распределяем содержимое по высоте */
         }
 
-        .book-item img {
+        .product-item img {
             max-width: 80px;
             max-height: 80px;
             margin-bottom: 10px;
         }
 
-        .book-item h3 {
+        .product-item h3 {
             font-size: 1rem;
             color: #333;
             margin-bottom: 10px;
         }
 
-        .book-item p {
+        .product-item p {
             font-size: 0.9rem;
             color: #555;
             margin-bottom: 10px;
         }
 
-        .book-item .buttons {
+        .product-item .buttons {
             display: flex;
             gap: 10px;
             margin-top: auto; /* Кнопки всегда внизу ячейки */
         }
 
-        .book-item .buttons button {
+        .product-item .buttons button {
             background-color: #4CAF50; /* Зеленый цвет для кнопок */
             color: white;
             border: none;
@@ -131,7 +131,7 @@
             transition: background-color 0.3s;
         }
 
-        .book-item .buttons button:hover {
+        .product-item .buttons button:hover {
             background-color: #45a049; /* Темно-зеленый цвет при наведении */
         }
 
@@ -239,16 +239,16 @@
         <h1>Избранное</h1>
 
         <div class="right-buttons">
-            <button onclick="location.href='/products'">Каталог</button>
+            <button onclick="location.href='/books'">Каталог</button>
         </div>
     </div>
 
     <div class="content">
 
-        <c:forEach var="book" items="${sessionScope.favourites.products}">
+        <c:forEach var="book" items="${sessionScope.selected.books}">
 
             <c:set var="categoryNames" value=""/>
-            <c:forEach var="category" items="${product.category}">
+            <c:forEach var="category" items="${book.category}">
                 <c:set var="categoryNames" value="${categoryNames += ' ' += category.name}"/>
             </c:forEach>
 
@@ -256,18 +256,18 @@
                 <img src="data:image/jpeg;base64,${book.image}" alt="${book.name}">
                 <h3>${book.name}</h3>
                 <p>Цена: $${book.price}</p>
-                <h4 style="display:none;">Описание: ${book.description}</h4>
+                <h4 style="display:none;">Автор: ${book.writer}</h4>
                 <div class="buttons">
                     <form method="post" action="/saveOrder" >
-                        <input type="hidden" name="booktId" value="${book.id}">
+                        <input type="hidden" name="bookId" value="${book.id}">
                         <button type="submit">Купить</button>
                     </form>
-                    <form method="post" action="/toggleFavorite" style="display:inline;">
+                    <form method="post" action="/toggleSelected" style="display:inline;">
                         <input type="hidden" name="bookId" value="${book.id}">
-                        <input type="hidden" name="isFavorite" id="isFavorite_${book.id}" value="${book.favorite}">
-                        <button type="submit" data-favorite="${book.favorite}">
+                        <input type="hidden" name="isSelected" id="isSelected_${book.id}" value="${book.selected}">
+                        <button type="submit" data-selected="${book.selected}">
                             <c:choose>
-                                <c:when test="${book.favorite}">
+                                <c:when test="${book.selected}">
                                     Удалить из избранного
                                 </c:when>
                                 <c:otherwise>

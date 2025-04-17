@@ -33,3 +33,20 @@ CREATE TABLE book_category(
     FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE,
     FOREIGN KEY (category_id) REFERENCES category(id) ON DELETE CASCADE
 );
+CREATE TABLE selected (
+                            id SERIAL PRIMARY KEY,
+                            reader_id INT NOT NULL,
+                            book_id INT NOT NULL,
+                            FOREIGN KEY (reader_id) REFERENCES readers(id) ON DELETE CASCADE,
+                            FOREIGN KEY (book_id) REFERENCES books(id) ON DELETE CASCADE
+);
+
+select c.id, c.name FROM category c join book_category bc on c.id = bc.category_id where bc.book_id = ?;
+
+CREATE TABLE orders (
+                        id SERIAL PRIMARY KEY,
+                        reader_id INT NOT NULL REFERENCES readers(id),
+                        book_id INT NOT NULL REFERENCES books(id),
+                        order_date TIMESTAMP NOT NULL,
+                        status_code VARCHAR(50) NOT NULL
+);

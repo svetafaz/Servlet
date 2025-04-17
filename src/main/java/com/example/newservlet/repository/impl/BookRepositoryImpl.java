@@ -4,6 +4,7 @@ import com.example.newservlet.mapper.BookMapper;
 import com.example.newservlet.model.BookEntity;
 import com.example.newservlet.repository.BookRepository;
 import com.example.newservlet.repository.CategoryRepository;
+import com.example.newservlet.repository.SelectedRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -23,12 +24,19 @@ public class BookRepositoryImpl implements BookRepository {
     private static final String SQL_INSERT_BOOKS = "insert into books (name,writer,price,quantity,image) values (?,?,?,?,?);";
     private final CategoryRepository categoryRepository;
     private final BookMapper bookMapper;
+    private final SelectedRepository selectedRepository;
+
+    @Override
+    public List<BookEntity> getAllBooks(long readerId) {
+        return List.of();
+    }
 
     @Override
     public List<BookEntity> getAllBooks(Long readerId) {
         List<BookEntity> books = jdbcTemplate.query(SQL_SELECT_ALL_BOOKS, bookMapper);
         for (BookEntity book : books) {
             book.setCategories(categoryRepository.findCategoriesByBookId(book.getId()));
+            book.setSelected(selectedRepository.isBookInSelected(readerId, book.getId()));
         }
         return books;
     }
