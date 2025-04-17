@@ -110,7 +110,7 @@ public class MainContextListener implements ServletContextListener {
     private DataSource dataSource() {
         PGSimpleDataSource dataSource = new PGSimpleDataSource();
         dataSource.setURL(PropertyReader.getProperty("DB_URL"));
-        dataSource.setUser(PropertyReader.getProperty("DB_USER"));
+        dataSource.setUser(PropertyReader.getProperty("DB_READER"));
         dataSource.setPassword(PropertyReader.getProperty("DB_PASSWORD"));
         return dataSource;
     }
