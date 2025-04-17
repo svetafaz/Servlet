@@ -26,10 +26,6 @@ public class BookRepositoryImpl implements BookRepository {
     private final BookMapper bookMapper;
     private final SelectedRepository selectedRepository;
 
-    @Override
-    public List<BookEntity> getAllBooks(long readerId) {
-        return List.of();
-    }
 
     @Override
     public List<BookEntity> getAllBooks(Long readerId) {

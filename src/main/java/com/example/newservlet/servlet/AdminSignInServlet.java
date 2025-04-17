@@ -50,7 +50,7 @@ public class AdminSignInServlet extends HttpServlet {
                 HttpSession session = req.getSession(true);
                 session.setAttribute(AUTHORIZATION, true);
                 session.setAttribute(IS_ADMIN, true);
-                session.setAttribute("user", authResponse.getReader());
+                session.setAttribute("reader", authResponse.getReader());
                 resp.sendRedirect("/admin/main");
             } else {
                 resp.sendRedirect("/error?err=" + authResponse.getStatusDesc());

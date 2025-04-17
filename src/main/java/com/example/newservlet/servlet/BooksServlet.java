@@ -2,6 +2,7 @@ package com.example.newservlet.servlet;
 
 import com.example.newservlet.dto.response.ListBooksResponse;
 import com.example.newservlet.dto.response.ListCategoriesResponse;
+import com.example.newservlet.dto.response.ReaderDataResponse;
 import com.example.newservlet.service.BookService;
 import com.example.newservlet.service.CategoryService;
 import jakarta.servlet.ServletContext;
@@ -29,7 +30,9 @@ public class BooksServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(true);
-        ListBooksResponse listBooksResponse = bookService.getAllBooks();
+        ReaderDataResponse reader = (ReaderDataResponse) session.getAttribute("reader");
+
+        ListBooksResponse listBooksResponse = bookService.getAllBooks(reader.getId());
         ListCategoriesResponse listCategoriesResponse = categoryService.getAllCategories();
         session.setAttribute("books", listBooksResponse);
         session.setAttribute("categories", listCategoriesResponse);
