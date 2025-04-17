@@ -25,7 +25,7 @@ public class BookRepositoryImpl implements BookRepository {
     private final BookMapper bookMapper;
 
     @Override
-    public List<BookEntity> getAllBooks() {
+    public List<BookEntity> getAllBooks(Long readerId) {
         List<BookEntity> books = jdbcTemplate.query(SQL_SELECT_ALL_BOOKS, bookMapper);
         for (BookEntity book : books) {
             book.setCategories(categoryRepository.findCategoriesByBookId(book.getId()));

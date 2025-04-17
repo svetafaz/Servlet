@@ -83,7 +83,7 @@
             cursor: pointer;
         }
 
-        .products-section {
+        .books-section {
             flex: 3; /* Правая часть: список продуктов */
             display: flex;
             flex-wrap: wrap;
@@ -92,7 +92,7 @@
             padding: 10px;
         }
 
-        .product-item {
+        .book-item {
             flex: 0 0 calc(33.33% - 20px); /* Три товара в ряд */
             background-color: #f9f9f9;
             border: 1px solid #ddd;
@@ -238,10 +238,10 @@
                     <h4 style="display:none;">Описание: ${book.description}</h4>
                     <div class="buttons">
                         <button onclick="showDetails(this)">Подробнее</button>
-                        <form method="post" action="toggleProduct" style="display:inline;">
-                            <input type="hidden" name="productId" value="${book.id}">
+                        <form method="post" action="toggleBook" style="display:inline;">
+                            <input type="hidden" name="bookId" value="${book.id}">
                             <input type="hidden" name="isFavorite" id="isFavorite_${book.id}" value="${book.favorite}">
-                            <button type="submit" data-favorite="${product.favorite}">
+                            <button type="submit" data-favorite="${book.favorite}">
                                 <c:choose>
                                     <c:when test="${book.favorite}">
                                         Удалить из избранного
@@ -300,8 +300,8 @@
             const selectedCategories = Array.from(document.querySelectorAll('.category-filter:checked')).map(cb => cb.value);
             const books = document.querySelectorAll('.book-item');
 
-            books.forEach(product => {
-                const productCategories = book.dataset.categories.split(' ');
+            books.forEach(book => {
+                const bookCategories = book.dataset.categories.split(' ');
                 const isVisible = selectedCategories.length === 0 || selectedCategories.every(category => bookCategories.includes(category));
                 book.style.display = isVisible ? 'flex' : 'none';
             });

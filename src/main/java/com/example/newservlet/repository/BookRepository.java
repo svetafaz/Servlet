@@ -7,7 +7,10 @@ import java.util.List;
 import java.util.Optional;
 
 public interface BookRepository {
-    List<BookEntity> getAllBooks();
+    List<BookEntity> getAllBooks(long readerId);
+
+    List<BookEntity> getAllBooks(Long readerId);
+
     Optional<BookEntity> findBookById(Long id);
     Optional<BookEntity> saveNewBook(BookEntity book, List<CategoryRequest>category);
 }

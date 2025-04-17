@@ -20,8 +20,8 @@ public class BookServiceImpl implements BookService {
     private final BookMapper bookMapper;
 
     @Override
-    public ListBooksResponse getAllBooks(){
-        List<BookEntity> books = bookRepository.getAllBooks();
+    public ListBooksResponse getAllBooks(Long readerId){
+        List<BookEntity> books = bookRepository.getAllBooks(readerId);
         log.info("Get all books");
         if (books.isEmpty()) {
             return new ListBooksResponse(Collections.emptyList());
