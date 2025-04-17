@@ -13,7 +13,7 @@ public class BookEntity {
     private long id;
     private String name;
     private String writer;
-    private int price;
+    private double price;
     private byte[] image;
     private int quantity;
     private List<CategoryEntity> categories;
