@@ -51,7 +51,7 @@ public class SelectedRepositoryImpl implements SelectedRepository {
         List<BookEntity> books = jdbcTemplate.query(SELECT_FROM_SELECTED_BY_ID_READER, bookMapper, readerId);
         for (BookEntity book : books) {
             book.setCategories(categoryRepository.findCategoriesByBookId(book.getId()));
-            book.setSelected(isBookInFavourites(readerId, book.getId()));
+            book.setSelected(isBookInSelected(readerId, book.getId()));
         }
         return books;
     }
