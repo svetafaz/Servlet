@@ -3,15 +3,15 @@ import com.example.newservlet.mapper.OrderMapper;
 import com.example.newservlet.mapper.impl.OrderMapperImpl;
 import com.example.newservlet.repository.BookRepository;
 import com.example.newservlet.repository.CategoryRepository;
-import com.example.newservlet.repository.OrderRepository;
+import com.example.newservlet.repository.OrdersRepository;
 import com.example.newservlet.repository.ReaderRepository;
 import com.example.newservlet.repository.impl.BookRepositoryImpl;
 import com.example.newservlet.repository.impl.CategoryRepositoryImpl;
-import com.example.newservlet.repository.impl.OrderRepositoryImpl;
+import com.example.newservlet.repository.impl.OrdersRepositoryImpl;
 import com.example.newservlet.repository.impl.ReaderRepositoryImpl;
 import com.example.newservlet.service.BookService;
 import com.example.newservlet.service.CategoryService;
-import com.example.newservlet.service.OrderService;
+import com.example.newservlet.service.OrdersService;
 import com.example.newservlet.service.ReaderService;
 import com.example.newservlet.service.impl.BookServiceImpl;
 import com.example.newservlet.service.impl.CategoryServiceImpl;
@@ -69,7 +69,7 @@ public class MainContextListener implements ServletContextListener {
         ReaderRepository readerRepository = new ReaderRepositoryImpl(jdbcTemplate,readerMapper);
         context.setAttribute("readerRepository", readerRepository);
 
-        OrderRepository orderRepository = new OrderRepositoryImpl(jdbcTemplate, orderMapper);
+        OrdersRepository ordersRepository = new OrdersRepositoryImpl(jdbcTemplate, orderMapper);
 
         CategoryService categoryService = new CategoryServiceImpl(categoryRepository, categoryMapper);
         context.setAttribute("categoryService", categoryService);
@@ -80,7 +80,7 @@ public class MainContextListener implements ServletContextListener {
         ReaderService readerService = new ReaderServiceImpl(readerRepository, readerMapper);
         context.setAttribute("readerService", readerService);
 
-        OrderService ordersService = new OrderServiceImpl(orderRepository);
+        OrdersService ordersService = new OrderServiceImpl(ordersRepository);
         context.setAttribute("ordersService", ordersService);
 
         List<String> PROTECTED_URIS = List.of(PropertyReader.getProperty("PROTECTED_URIS").split(","));
