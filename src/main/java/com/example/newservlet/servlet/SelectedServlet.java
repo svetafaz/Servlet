@@ -33,7 +33,7 @@ public class SelectedServlet extends HttpServlet {
 
         ListBooksResponse listBooksResponse = selectedService.getAllSelected(reader.getId());
 
-        session.setAttribute("selected",ListBooksResponse);
+        session.setAttribute("selected",listBooksResponse);
 
         req.getRequestDispatcher("jsp/selected.jsp").forward(req, resp);
     }
