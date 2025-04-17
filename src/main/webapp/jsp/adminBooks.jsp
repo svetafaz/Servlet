@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог продуктов</title>
+    <title>Каталог книг</title>
     <style>
         body {
             background-image: url('../image/background.jpg'); /* Фоновое изображение */
@@ -204,12 +204,12 @@
     <h1>Каталог книг</h1>
 
     <!-- Таблица книг -->
-    <table id="products-table">
+    <table id="books-table">
         <thead>
         <tr>
             <th>ID</th>
             <th>Название</th>
-            <th>Описание</th>
+            <th>Автор</th>
             <th>Цена</th>
             <th>Категории</th>
             <th>Количество</th>
@@ -252,8 +252,10 @@
 
     <!-- Форма для добавления books -->
     <form class="add-book-form" id="add-book-form" action="/admin/books" method="post" enctype="multipart/form-data">
-        <input type="text" name="name" placeholder="Название продукта" required>
-        <input type="text" name="description" placeholder="Описание продукта" required>
+        <input type="text" name="name" placeholder="Название книги" required>
+        <label>
+            <input type="text" name="writer" placeholder="Автор книги" required>
+        </label>
         <input type="number" name="price" placeholder="Цена" step="0.01"  required>
 
         <!-- Выпадающий список с чекбоксами -->

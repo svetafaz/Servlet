@@ -20,11 +20,6 @@ public class BookServiceImpl implements BookService {
     private final BookMapper bookMapper;
 
     @Override
-    public ListBooksResponse getAllBooks() {
-        return null;
-    }
-
-    @Override
     public ListBooksResponse getAllBooks(Long readerId){
         List<BookEntity> books = bookRepository.getAllBooks(readerId);
         log.info("Get all books");
@@ -36,6 +31,5 @@ public class BookServiceImpl implements BookService {
        @Override
     public void saveNewBook(NewBookRequest request, List<CategoryRequest>requestList){
            Optional<BookEntity> optionalBook=bookRepository.saveNewBook(bookMapper.toEntity(request),requestList);
-
           }
 }
