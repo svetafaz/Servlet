@@ -8,7 +8,7 @@ import lombok.*;
 public class NewBookRequest {
     private String name;
     private String writer;
-    private int price;
+    private double price;
     private byte[] image;
     private int quantity;
     }

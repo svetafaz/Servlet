@@ -13,7 +13,7 @@ public class BookResponse {
     private Long id;
     private String name;
     private String writer;
-    private int price;
+    private double price;
     private String image;
     private int quantity;
     private List<CategoryEntity> category;

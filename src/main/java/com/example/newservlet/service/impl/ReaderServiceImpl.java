@@ -69,6 +69,10 @@ private AuthResponse response(int status, String statusDesc, ReaderDataResponse 
             .reader(reader)
             .build();
         }
+        @Override
+    public AuthResponse checkAdmin(ReaderDataResponse reader) {
+        if (reader.getRole().equals(ADMIN_ROLE)) {
+            return response(0, "OK", reader);
+        } else {
+            return response(10, "You are not admin :(", null)
 }
-
-
