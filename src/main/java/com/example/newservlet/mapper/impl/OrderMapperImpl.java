@@ -14,7 +14,7 @@ public class OrderMapperImpl implements OrderMapper {
         return OrdersEntity.builder()
                 .id(rs.getLong("id"))
                 .readerId(rs.getLong("reader_id"))
-                .bookId(rs.getLong("product_id"))
+                .bookId(rs.getLong("book_id"))
                 .orderDate(rs.getTimestamp("order_date").toLocalDateTime())
                 .statusCode(rs.getString("status_code"))
                 .build();

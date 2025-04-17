@@ -33,8 +33,7 @@ public class SaveOrdersServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Long productId = Long.parseLong(req.getParameter("bookId"));
-
+        Long bookId = Long.parseLong(req.getParameter("bookId"));
         HttpSession session = req.getSession(true);
         ReaderDataResponse reader = (ReaderDataResponse) session.getAttribute("reader");
 

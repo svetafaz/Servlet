@@ -115,7 +115,7 @@
     <c:forEach var="order" items="${sessionScope.orders}">
         <div class="order-card">
             <h2>Заказ #${order.id}</h2>
-            <c:set var="bookId" value="${order.productId}" />
+            <c:set var="bookId" value="${order.bookId}" />
             <div class="books">
                 <p>${sessionScope.books.books.get(bookId).name} (${sessionScope.books.books.get(bookId).price})</p>
             </div>
