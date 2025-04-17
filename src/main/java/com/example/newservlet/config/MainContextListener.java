@@ -1,22 +1,10 @@
 package com.example.newservlet.config;
 import com.example.newservlet.mapper.OrderMapper;
 import com.example.newservlet.mapper.impl.OrderMapperImpl;
-import com.example.newservlet.repository.BookRepository;
-import com.example.newservlet.repository.CategoryRepository;
-import com.example.newservlet.repository.OrdersRepository;
-import com.example.newservlet.repository.ReaderRepository;
-import com.example.newservlet.repository.impl.BookRepositoryImpl;
-import com.example.newservlet.repository.impl.CategoryRepositoryImpl;
-import com.example.newservlet.repository.impl.OrdersRepositoryImpl;
-import com.example.newservlet.repository.impl.ReaderRepositoryImpl;
-import com.example.newservlet.service.BookService;
-import com.example.newservlet.service.CategoryService;
-import com.example.newservlet.service.OrdersService;
-import com.example.newservlet.service.ReaderService;
-import com.example.newservlet.service.impl.BookServiceImpl;
-import com.example.newservlet.service.impl.CategoryServiceImpl;
-import com.example.newservlet.service.impl.OrderServiceImpl;
-import com.example.newservlet.service.impl.ReaderServiceImpl;
+import com.example.newservlet.repository.*;
+import com.example.newservlet.repository.impl.*;
+import com.example.newservlet.service.*;
+import com.example.newservlet.service.impl.*;
 import jakarta.servlet.ServletContext;
 import jakarta.servlet.ServletContextEvent;
 import jakarta.servlet.ServletContextListener;
@@ -63,7 +51,11 @@ public class MainContextListener implements ServletContextListener {
         CategoryRepository categoryRepository = new CategoryRepositoryImpl(jdbcTemplate,categoryMapper);
         context.setAttribute("categoryRepository", categoryRepository);
 
-        BookRepository bookRepository = new BookRepositoryImpl(jdbcTemplate,categoryRepository,bookMapper);
+        SelectedRepository selectedRepository = new SelectedRepositoryImpl(jdbcTemplate, bookMapper, categoryRepository);
+        context.setAttribute("selectedRepository", selectedRepository);
+
+
+        BookRepository bookRepository = new BookRepositoryImpl(jdbcTemplate,categoryRepository,bookMapper,selectedRepository);
         context.setAttribute("bookRepository", bookRepository);
 
         ReaderRepository readerRepository = new ReaderRepositoryImpl(jdbcTemplate,readerMapper);
@@ -79,6 +71,9 @@ public class MainContextListener implements ServletContextListener {
 
         ReaderService readerService = new ReaderServiceImpl(readerRepository, readerMapper);
         context.setAttribute("readerService", readerService);
+
+        SelectedService selectedService = new SelectedServiceImpl(selectedRepository, bookMapper);
+        context.setAttribute("selectedService", selectedService);
 
         OrdersService ordersService = new OrderServiceImpl(ordersRepository);
         context.setAttribute("ordersService", ordersService);

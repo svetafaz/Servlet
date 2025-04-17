@@ -207,7 +207,7 @@
 
         <!-- Кнопка "Избранное" справа -->
         <div class="right-buttons">
-            <button onclick="location.href='/favourites'">Избранное</button>
+            <button onclick="location.href='/selected'">Избранное</button>
         </div>
     </div>
 
@@ -235,15 +235,15 @@
                     <img src="data:image/jpeg;base64,${book.image}" alt="${book.name}">
                     <h3>${book.name}</h3>
                     <p>Цена: $${book.price}</p>
-                    <h4 style="display:none;">Описание: ${book.description}</h4>
+                    <h4 style="display:none;">Автор: ${book.writer}</h4>
                     <div class="buttons">
                         <button onclick="showDetails(this)">Подробнее</button>
                         <form method="post" action="toggleBook" style="display:inline;">
                             <input type="hidden" name="bookId" value="${book.id}">
-                            <input type="hidden" name="isFavorite" id="isFavorite_${book.id}" value="${book.favorite}">
-                            <button type="submit" data-favorite="${book.favorite}">
+                            <input type="hidden" name="isSelected" id="isSelected${book.id}" value="${book.selected}">
+                            <button type="submit" data-selected="${book.selected}">
                                 <c:choose>
-                                    <c:when test="${book.favorite}">
+                                    <c:when test="${book.selected}">
                                         Удалить из избранного
                                     </c:when>
                                     <c:otherwise>
@@ -265,7 +265,7 @@
     <div class="modal-content">
         <span class="close" onclick="closeModal()">&times;</span>
         <h3 id="modal-title"></h3>
-        <p id="modal-description"></p>
+        <p id="modal-writer"></p>
     </div>
 </div>
 
@@ -274,13 +274,13 @@
     function showDetails(button) {
         const bookItem = button.parentElement.parentElement;
         const title = bookItem.querySelector('h3').innerText;
-        const description = bookItem.querySelector('h4').innerText;
+        const writer = bookItem.querySelector('h4').innerText;
         const price = bookItem.querySelector('p').innerText;
 
 
         // Заполняем модальное окно данными
         document.getElementById('modal-title').innerText = title;
-        document.getElementById('modal-description').innerText = price + "\n" + description;
+        document.getElementById('modal-writer').innerText = price + "\n" + writer;
 
 
 

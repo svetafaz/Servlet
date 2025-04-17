@@ -17,4 +17,5 @@ public class BookResponse {
     private String image;
     private int quantity;
     private List<CategoryEntity> category;
+    private boolean isSelected;
 }
