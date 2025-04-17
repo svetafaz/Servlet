@@ -1,6 +1,7 @@
 package com.example.newservlet.repository.impl;
 import com.example.newservlet.mapper.OrderMapper;
 import com.example.newservlet.model.OrderEntity;
+import com.example.newservlet.repository.OrderRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -40,8 +41,8 @@ import java.util.List;
         }
 
         @Override
-        public List<OrderEntity> findAllByUserId(Long userId) {
-            return jdbcTemplate.query(SELECT_ORDERS_BY_ID, orderMapper, userId);
+        public List<OrderEntity> findAllByReaderId(Long readerId) {
+            return jdbcTemplate.query(SELECT_ORDERS_BY_ID, orderMapper, readerId);
         }
 
         @Override
