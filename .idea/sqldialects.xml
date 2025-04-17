@@ -4,5 +4,6 @@
     <file url="file://$PROJECT_DIR$/db/shop_sv.sql" dialect="PostgreSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/newservlet/repository/impl/BookRepositoryImpl.java" dialect="GenericSQL" />
     <file url="file://$PROJECT_DIR$/src/main/java/com/example/newservlet/repository/impl/CategoryRepositoryImpl.java" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/java/com/example/newservlet/repository/impl/ReaderRepositoryImpl.java" dialect="GenericSQL" />
   </component>
 </project>

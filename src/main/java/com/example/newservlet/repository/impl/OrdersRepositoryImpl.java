@@ -1,7 +1,7 @@
 package com.example.newservlet.repository.impl;
 import com.example.newservlet.mapper.OrderMapper;
-import com.example.newservlet.model.OrderEntity;
-import com.example.newservlet.repository.OrderRepository;
+import com.example.newservlet.model.OrdersEntity;
+import com.example.newservlet.repository.OrdersRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -13,7 +13,7 @@ import java.util.List;
 
     @Slf4j
     @RequiredArgsConstructor
-    public class OrderRepositoryImpl implements OrderRepository {
+    public class OrdersRepositoryImpl implements OrdersRepository {
 
         private final JdbcTemplate jdbcTemplate;
 
@@ -28,7 +28,7 @@ import java.util.List;
         private final OrderMapper orderMapper;
 
         @Override
-        public void save(OrderEntity order) {
+        public void save(OrdersEntity order) {
             KeyHolder holder = new GeneratedKeyHolder();
             jdbcTemplate.update(con -> {
                 PreparedStatement ps = con.prepareStatement(INSERT_INTO_ORDERS, new String[]{"id"});
@@ -41,7 +41,7 @@ import java.util.List;
         }
 
         @Override
-        public List<OrderEntity> findAllByReaderId(Long readerId) {
+        public List<OrdersEntity> findAllByReaderId(Long readerId) {
             return jdbcTemplate.query(SELECT_ORDERS_BY_ID, orderMapper, readerId);
         }
 

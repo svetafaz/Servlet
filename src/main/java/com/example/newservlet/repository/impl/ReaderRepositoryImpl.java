@@ -8,8 +8,6 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import com.example.newservlet.model.ReaderEntity;
-import java.sql.Connection;
-import java.io.Reader;
 import java.sql.PreparedStatement;
 import java.util.Objects;
 import java.util.Optional;
@@ -21,7 +19,7 @@ public class ReaderRepositoryImpl implements ReaderRepository {
     private final JdbcTemplate jdbcTemplate;
     private static final String SQL_SELECT_BY_ID = "select * from readers where id =?";
     private static final String SQL_SELECT_BY_EMAIL = "select * from readers where email =?";
-    private static final String SQL_SELECT_BY_USERMAME = "select * from readers where username=?";
+    private static final String SQL_SELECT_BY_USERNAME = "select * from readers where username=?";
     private static final String SQL_INSERT ="insert into readers(email,hash_password,username,role) values(?,?,?,?)";
     private final ReaderMapper readerRowMapper;
 
@@ -46,7 +44,7 @@ public Optional<ReaderEntity> findReaderById(Long id) {
         @Override
         public Optional<ReaderEntity> findReaderByUsername (String username){
             try {
-                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_USERMAME, readerRowMapper, username));
+                return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_USERNAME, readerRowMapper, username));
             } catch (EmptyResultDataAccessException e) {
                 return Optional.empty();
             }

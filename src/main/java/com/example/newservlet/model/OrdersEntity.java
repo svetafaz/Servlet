@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class OrderEntity {
+public class OrdersEntity {
     public final static String STATUS_PENDING = "pending";
     public final static String STATUS_APPROVED = "completed";
     public final static String STATUS_REJECTED = "cancelled";
