@@ -86,7 +86,7 @@
             background-color: #1976D2;
         }
 
-        .add-product-form {
+        .add-book-form {
             margin-top: 20px;
             width: 100%;
             display: flex;
@@ -237,7 +237,7 @@
                 <td>${book.quantity}</td>
                 <td>
                     <div class="book-item">
-                        <img src="data:image/jpeg;base64,${book.image}" alt="${product.name}">
+                        <img src="data:image/jpeg;base64,${book.image}" alt="${book.name}">
                     </div>
                 </td>
                 <td>

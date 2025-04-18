@@ -26,14 +26,14 @@ public class ToggleSelectedServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Long bookId = Long.parseLong(req.getParameter("bookId"));
-        boolean isFavorite = Boolean.parseBoolean(req.getParameter("isSelected"));
+        boolean isSelected = Boolean.parseBoolean(req.getParameter("isSelected"));
 
         HttpSession session = req.getSession(true);
         ReaderDataResponse reader = (ReaderDataResponse) session.getAttribute("reader");
 
         Long readerId = reader.getId();
 
-        if (!isFavorite) {
+        if (!isSelected) {
             selectedService.addSelected(readerId, bookId);
         } else {
             selectedService.deleteSelected(readerId, bookId);
