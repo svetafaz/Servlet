@@ -13,7 +13,7 @@ import jakarta.servlet.http.HttpSession;
 
 import java.io.IOException;
 
-@WebServlet("/toggleFavorite")
+@WebServlet("/toggleSelected")
 public class ToggleSelectedServlet extends HttpServlet {
     private SelectedService selectedService;
 

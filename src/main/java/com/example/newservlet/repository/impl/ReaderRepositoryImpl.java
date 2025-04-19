@@ -26,7 +26,7 @@ public class ReaderRepositoryImpl implements ReaderRepository {
     @Override
 public Optional<ReaderEntity> findReaderById(Long id) {
         try {
-            return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, readerRowMapper, id));
+            return Optional.ofNullable(jdbcTemplate.queryForObject(SQL_SELECT_BY_ID, readerRowMapper,id));
         } catch (EmptyResultDataAccessException e) {
             return Optional.empty();
         }
