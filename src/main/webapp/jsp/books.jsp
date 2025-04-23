@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Каталог товаров</title>
+    <title>Каталог книг</title>
     <style>
         body {
             background-image: url('../image/background.jpg'); /* Путь к фоновому изображению */
@@ -107,31 +107,31 @@
             justify-content: space-between; /* Распределяем содержимое по высоте */
         }
 
-        .product-item img {
+        .book-item img {
             max-width: 80px;
             max-height: 80px;
             margin-bottom: 10px;
         }
 
-        .product-item h3 {
+        .book-item h3 {
             font-size: 1rem;
             color: #333;
             margin-bottom: 10px;
         }
 
-        .product-item p {
+        .book-item b {
             font-size: 0.9rem;
             color: #555;
             margin-bottom: 10px;
         }
 
-        .product-item .buttons {
+        .book-item .buttons {
             display: flex;
             gap: 10px;
             margin-top: auto; /* Кнопки всегда внизу ячейки */
         }
 
-        .product-item .buttons button {
+        .book-item .buttons button {
             background-color: #4CAF50; /* Зеленый цвет для кнопок */
             color: white;
             border: none;

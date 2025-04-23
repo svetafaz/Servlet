@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>User Registration</title>
+    <title>Reader Registration</title>
     <style>
         body {
             font-family: Arial, sans-serif;

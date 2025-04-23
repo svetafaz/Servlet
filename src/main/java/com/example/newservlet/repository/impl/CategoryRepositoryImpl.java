@@ -23,9 +23,10 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     private static final String SQL_CATEGORY_BY_NAME = "select *from category where name =?";
     private static final String SQL_INSERT_BOOK_CATEGORY = "insert into book_category(book_id, category_id) values (?,?)";
     private static final String SQL_SELECT_ALL_CATEGORY = "select* from category";
-    private static final String SQL_SELECT_CATEGORIES_BY_BOOK_ID = "select c.id,c.name FROM category c " +
-            "join book_category bc on c.id = bc.category_id" +
-            "where bc.book_id=?";
+    private static final String SQL_SELECT_CATEGORIES_BY_BOOK_ID =
+            "select c.id, c.name FROM category c " +
+                    "join book_category bc on c.id = bc.category_id " +
+                    "where bc.book_id = ?";
     private final CategoryMapper categoryMapper;
 
     @Override
@@ -72,6 +73,4 @@ public class CategoryRepositoryImpl implements CategoryRepository {
     public List<CategoryEntity> getAllCategories() {
         return jdbcTemplate.query(SQL_SELECT_ALL_CATEGORY,categoryMapper);
     }
-
 }
-

@@ -19,7 +19,7 @@ import java.util.List;
 
         private final static String INSERT_INTO_ORDERS = "insert into orders (reader_id, book_id, order_date, status_code) values (?, ?, ?, ?)";
 
-        private final static String SELECT_ORDERS_BY_ID = "SELECT * FROM orders WHERE user_id = ?";
+        private final static String SELECT_ORDERS_BY_ID = "SELECT * FROM orders WHERE reader_id = ?";
 
         private final static String UPDATE_STATUS_CODE_BY_ID_ORDERS = "UPDATE orders SET status_code = ? WHERE id = ?";
 

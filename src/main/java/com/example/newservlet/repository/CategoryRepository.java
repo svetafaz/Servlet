@@ -1,7 +1,6 @@
 package com.example.newservlet.repository;
 
 import com.example.newservlet.dto.request.CategoryRequest;
-import com.example.newservlet.model.BookEntity;
 import com.example.newservlet.model.CategoryEntity;
 
 import java.util.Optional;
