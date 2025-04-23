@@ -44,12 +44,4 @@ public class ReaderMapperImpl implements ReaderMapper {
                 .role(rs.getString("role"))
                 .build();
         }
-
-
-
-
-
-
-
-
 }

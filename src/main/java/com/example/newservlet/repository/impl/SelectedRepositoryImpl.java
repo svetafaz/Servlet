@@ -24,8 +24,8 @@ public class SelectedRepositoryImpl implements SelectedRepository {
 
     private final static String SELECT_FROM_SELECTED_BY_ID_READER = "select b.id, b.name, b.writer, b.price, b.image, b.quantity " +
             "from books b " +
-            "join favourites f ON b.id = f.book_id " +
-            "where f.reader_id = ?";
+            "join selected s ON b.id = s.book_id " +
+            "where s.reader_id = ?";
 
     private final static String SELECT_IS_BOOK_IN_SELECTED = "select count(*) from selected where reader_id = ? and book_id = ?";
 
